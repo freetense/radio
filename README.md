@@ -3,7 +3,7 @@
 
 
 
-#1) Ustanovka audio:#
+## 1) Ustanovka audio:
 <br>
 pip install pyglet
 <br>
@@ -12,7 +12,7 @@ sudo apt-get install libavbin-dev libavbin0
 sudo sh ./install-avbin-linux-x86-64-v10
 <br><br>
 
-#2) Ustanovka osmocom sink:#
+## 2) Ustanovka osmocom sink:
 <br>
 git clone git://git.osmocom.org/gr-osmosdr
 <br>
