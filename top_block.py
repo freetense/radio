@@ -3,8 +3,9 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Mar 21 02:00:10 2018
+# Generated: Tue May  8 06:14:09 2018
 ##################################################
+
 
 if __name__ == '__main__':
     import ctypes
@@ -54,7 +55,7 @@ class top_block(grc_wxgui.top_block_gui):
         	sizer=_variable_slider_0_sizer,
         	value=self.variable_slider_0,
         	callback=self.set_variable_slider_0,
-        	label="RF Tx Gain",
+        	label='RF Tx Gain',
         	converter=forms.float_converter(),
         	proportion=0,
         )
@@ -77,35 +78,36 @@ class top_block(grc_wxgui.top_block_gui):
                 taps=None,
                 fractional_bw=None,
         )
-        self.osmosdr_sink_0 = osmosdr.sink( args="numchan=" + str(1) + " " + "" )
+        self.osmosdr_sink_0 = osmosdr.sink( args="numchan=" + str(1) + " " + '' )
         self.osmosdr_sink_0.set_sample_rate(2400000)
         self.osmosdr_sink_0.set_center_freq(100.600e6, 0)
         self.osmosdr_sink_0.set_freq_corr(0, 0)
         self.osmosdr_sink_0.set_gain(10, 0)
         self.osmosdr_sink_0.set_if_gain(variable_slider_0, 0)
         self.osmosdr_sink_0.set_bb_gain(10, 0)
-        self.osmosdr_sink_0.set_antenna("", 0)
+        self.osmosdr_sink_0.set_antenna('', 0)
         self.osmosdr_sink_0.set_bandwidth(0, 0)
-          
+
         self.low_pass_filter_0 = filter.interp_fir_filter_fff(1, firdes.low_pass(
         	1, samp_rate, 12000, 100, firdes.WIN_HAMMING, 6.76))
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vff((4, ))
-        self.audio_source_1 = audio.source(samp_rate, "pulse", True)
+        self.audio_source_1 = audio.source(samp_rate, 'pulse', True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
         	audio_rate=samp_rate,
         	quad_rate=samp_rate*2,
         	tau=75e-6,
         	max_dev=75e3,
+        	fh=-1.0,
                 )
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_nbfm_tx_0, 0), (self.rational_resampler_xxx_0, 0))    
-        self.connect((self.audio_source_1, 0), (self.blocks_multiply_const_vxx_0, 0))    
-        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.low_pass_filter_0, 0))    
-        self.connect((self.low_pass_filter_0, 0), (self.analog_nbfm_tx_0, 0))    
-        self.connect((self.rational_resampler_xxx_0, 0), (self.osmosdr_sink_0, 0))    
+        self.connect((self.analog_nbfm_tx_0, 0), (self.rational_resampler_xxx_0, 0))
+        self.connect((self.audio_source_1, 0), (self.blocks_multiply_const_vxx_0, 0))
+        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.low_pass_filter_0, 0))
+        self.connect((self.low_pass_filter_0, 0), (self.analog_nbfm_tx_0, 0))
+        self.connect((self.rational_resampler_xxx_0, 0), (self.osmosdr_sink_0, 0))
 
     def get_variable_slider_0(self):
         return self.variable_slider_0

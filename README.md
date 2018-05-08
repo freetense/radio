@@ -29,3 +29,8 @@ make
 sudo make install
 <br>
 sudo ldconfig
+<br>
+<br>
+ili:)
+<br>
+sudo apt-get install gr-osmosdr
