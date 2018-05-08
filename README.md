@@ -33,4 +33,5 @@ sudo ldconfig
 <br>
 ili:)
 <br>
+
 sudo apt-get install gr-osmosdr
